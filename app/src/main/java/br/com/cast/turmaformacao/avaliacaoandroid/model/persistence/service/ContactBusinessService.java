@@ -48,4 +48,31 @@ public final class ContactBusinessService {
         SocialNetworkRepository.deleteSocialNetworkByContactId(id);
         ContactRepository.deleteContact(id);
     }
+
+    public static void addContactOrEdit(Contact c){
+        if(c.getId() != null){
+            editContat(c);
+        }
+        else{
+            addContact(c);
+        }
+    }
+
+    public static void editContat(Contact c){
+        EmailRepository.deleteEmailByContactId(c.getId());
+        PhoneRepository.deletePhoneByContactId(c.getId());
+        AddressRepository.deleteAddress(c.getId());
+        SocialNetworkRepository.deleteSocialNetworkByContactId(c.getId());
+        ContactRepository.updateContact(c);
+        AddressRepository.addAddress(c.getAddress(), c.getId());
+        for(String email : c.getEmailList()){
+            EmailRepository.addEmail(email, c.getId());
+        }
+        for (String phone : c.getPhoneList()){
+            PhoneRepository.addPhone(phone, c.getId());
+        }
+        for (SocialNetwork sn : c.getSocialNetworks()){
+            SocialNetworkRepository.addSocialNetwork(sn, c.getId());
+        }
+    }
 }

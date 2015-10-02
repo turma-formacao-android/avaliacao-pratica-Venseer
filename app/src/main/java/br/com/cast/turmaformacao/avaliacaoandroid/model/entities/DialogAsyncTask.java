@@ -22,6 +22,9 @@ public abstract class DialogAsyncTask<Params, Progress, Result> extends AsyncTas
         if (p.isShowing()) {
             p.dismiss();
         }
+        onComplete(o);
     }
+
+    public abstract void onComplete(Object result);
 
 }

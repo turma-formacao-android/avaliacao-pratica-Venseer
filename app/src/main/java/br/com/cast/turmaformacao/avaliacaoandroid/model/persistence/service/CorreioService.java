@@ -28,6 +28,7 @@ public final class CorreioService {
             final HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("ACCEPT", "APPLICATION/JSON");
+            conn.setConnectTimeout(50000);
             int responseCode = conn.getResponseCode();
             if (responseCode != HttpURLConnection.HTTP_OK) {
                 return null;

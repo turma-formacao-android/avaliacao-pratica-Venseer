@@ -67,8 +67,19 @@ public class AgendaFormActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_add_new_form) {
-            bindContactAndAddOrEdit();
-            this.finish();
+            DialogAsyncTask asyncTask = new DialogAsyncTask<Object, Void, Void>(AgendaFormActivity.this){
+                @Override
+                public void onComplete(Object result) {
+                    AgendaFormActivity.this.finish();
+                }
+
+                @Override
+                protected Object doInBackground(Object[] objects) {
+                    bindContactAndAddOrEdit();
+                    return null;
+                }
+            };
+            asyncTask.execute();
             return true;
         }
 

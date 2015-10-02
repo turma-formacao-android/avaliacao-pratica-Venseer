@@ -59,6 +59,9 @@ public class AgendaFormActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_form_agenda, menu);
+        MenuItem menuItem = (MenuItem) menu.findItem(R.id.action_add_new_form);
+        if(isEditMode)
+            menuItem.setTitle(R.string.generic_message_edit);
         return true;
     }
 
@@ -130,6 +133,7 @@ public class AgendaFormActivity extends AppCompatActivity {
     }
 
     private void initialize(){
+        isEditMode = false;
         formName = (EditText)findViewById(R.id.formName);
         zipCode = (EditText)findViewById(R.id.formZipCode);
         addressType = (EditText)findViewById(R.id.formAddressType);

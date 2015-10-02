@@ -111,16 +111,16 @@ public class AgendaActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                final Contact c = ((ContactAdapter)listView.getAdapter()).getItem(i);
+                final Contact c = ((ContactAdapter) listView.getAdapter()).getItem(i);
                 final FrameLayout frameView = new FrameLayout(AgendaActivity.this);
                 final AlertDialog alertDialog = new AlertDialog.Builder(AgendaActivity.this)
                         .setView(frameView).create();
                 LayoutInflater inflater = alertDialog.getLayoutInflater();
                 View dialoglayout = inflater.inflate(R.layout.alert_contact, frameView);
-                TextView name = (TextView)dialoglayout.findViewById(R.id.alertContactName);
+                TextView name = (TextView) dialoglayout.findViewById(R.id.alertContactName);
                 name.setText(c.getName());
-                LinearLayout phoneScrollLinear = (LinearLayout)dialoglayout.findViewById(R.id.alertScrollViewPhones);
-                for(final String phone : c.getPhoneList()){
+                LinearLayout phoneScrollLinear = (LinearLayout) dialoglayout.findViewById(R.id.alertScrollViewPhones);
+                for (final String phone : c.getPhoneList()) {
                     LinearLayout linearLayoutAdd = new LinearLayout(AgendaActivity.this);
                     Drawable icon = getResources().getDrawable(android.R.drawable.sym_action_call);
                     ImageView imageView = new ImageView(AgendaActivity.this);
@@ -142,18 +142,18 @@ public class AgendaActivity extends AppCompatActivity {
                     linearLayoutAdd.addView(imageView);
                     linearLayoutAdd.addView(textView);
 
-                    linearLayoutAdd.setPadding(0,0,0,10);
+                    linearLayoutAdd.setPadding(0, 0, 0, 10);
                     phoneScrollLinear.addView(linearLayoutAdd);
                 }
-                LinearLayout emailScrollLinear = (LinearLayout)dialoglayout.findViewById(R.id.alertScrollViewEmails);
-                for(String email : c.getEmailList()){
+                LinearLayout emailScrollLinear = (LinearLayout) dialoglayout.findViewById(R.id.alertScrollViewEmails);
+                for (String email : c.getEmailList()) {
                     TextView textView = new TextView(AgendaActivity.this);
                     textView.setText(email);
                     emailScrollLinear.addView(textView);
                 }
-                LinearLayout socialNetworkNameScrollLinear = (LinearLayout)dialoglayout.findViewById(R.id.alertScrollViewSocialNetworksName);
-                LinearLayout socialNetworkValueScrollLinear = (LinearLayout)dialoglayout.findViewById(R.id.alertScrollViewSocialNetworksValue);
-                for(SocialNetwork sn : c.getSocialNetworks()){
+                LinearLayout socialNetworkNameScrollLinear = (LinearLayout) dialoglayout.findViewById(R.id.alertScrollViewSocialNetworksName);
+                LinearLayout socialNetworkValueScrollLinear = (LinearLayout) dialoglayout.findViewById(R.id.alertScrollViewSocialNetworksValue);
+                for (SocialNetwork sn : c.getSocialNetworks()) {
                     TextView textView = new TextView(AgendaActivity.this);
                     textView.setText(sn.getSocialNetoworkName());
                     socialNetworkNameScrollLinear.addView(textView);
@@ -161,34 +161,34 @@ public class AgendaActivity extends AppCompatActivity {
                     textView.setText(sn.getValue());
                     socialNetworkValueScrollLinear.addView(textView);
                 }
-                TextView addressType = (TextView)dialoglayout.findViewById(R.id.alertAddressType);
+                TextView addressType = (TextView) dialoglayout.findViewById(R.id.alertAddressType);
                 addressType.setText(c.getAddress().getAddressType());
-                TextView address = (TextView)dialoglayout.findViewById(R.id.alertAddress);
+                TextView address = (TextView) dialoglayout.findViewById(R.id.alertAddress);
                 address.setText(c.getAddress().getAddress());
-                TextView alertZipCode = (TextView)dialoglayout.findViewById(R.id.alertZipCode);
+                TextView alertZipCode = (TextView) dialoglayout.findViewById(R.id.alertZipCode);
                 alertZipCode.setText(c.getAddress().getZipCode());
-                Button buttonDelete = (Button)dialoglayout.findViewById(R.id.alertButtonDelete);
+                Button buttonDelete = (Button) dialoglayout.findViewById(R.id.alertButtonDelete);
                 buttonDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         final DialogAsyncTask<Object, Void, Object> dialogAsyncTask =
                                 new DialogAsyncTask<Object, Void, Object>(AgendaActivity.this) {
-                            @Override
-                            public void onComplete(Object result) {
-                                getAndUpdateList();
-                                alertDialog.dismiss();
-                            }
+                                    @Override
+                                    public void onComplete(Object result) {
+                                        getAndUpdateList();
+                                        alertDialog.dismiss();
+                                    }
 
-                            @Override
-                            protected Object doInBackground(Object[] objects) {
-                                ContactBusinessService.deleteContact((Long)objects[0]);
-                                return Void.TYPE;
-                            }
-                        };
+                                    @Override
+                                    protected Object doInBackground(Object[] objects) {
+                                        ContactBusinessService.deleteContact((Long) objects[0]);
+                                        return Void.TYPE;
+                                    }
+                                };
                         dialogAsyncTask.execute(c.getId());
                     }
                 });
-                Button buttonEdit = (Button)dialoglayout.findViewById(R.id.alertButtonEdit);
+                Button buttonEdit = (Button) dialoglayout.findViewById(R.id.alertButtonEdit);
                 buttonEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -206,7 +206,7 @@ public class AgendaActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                return false;
+                return onQueryTextChange(s);
             }
 
             @Override

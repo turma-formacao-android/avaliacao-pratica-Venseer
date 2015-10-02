@@ -3,6 +3,11 @@ package br.com.cast.turmaformacao.avaliacaoandroid.control;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
+import android.graphics.drawable.ShapeDrawable;
+import android.media.Image;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -108,10 +114,30 @@ public class AgendaActivity extends AppCompatActivity {
                 TextView name = (TextView)dialoglayout.findViewById(R.id.alertContactName);
                 name.setText(c.getName());
                 LinearLayout phoneScrollLinear = (LinearLayout)dialoglayout.findViewById(R.id.alertScrollViewPhones);
-                for(String phone : c.getPhoneList()){
+                for(final String phone : c.getPhoneList()){
+                    LinearLayout linearLayoutAdd = new LinearLayout(AgendaActivity.this);
+                    Drawable icon = getResources().getDrawable(android.R.drawable.sym_action_call);
+                    ImageView imageView = new ImageView(AgendaActivity.this);
+                    imageView.setImageDrawable(icon);
+                    linearLayoutAdd.setOrientation(LinearLayout.HORIZONTAL);
                     TextView textView = new TextView(AgendaActivity.this);
                     textView.setText(phone);
-                    phoneScrollLinear.addView(textView);
+
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(Intent.ACTION_CALL);
+
+                            intent.setData(Uri.parse("tel:" + phone.trim()));
+                            AgendaActivity.this.startActivity(intent);
+                        }
+                    });
+
+                    linearLayoutAdd.addView(imageView);
+                    linearLayoutAdd.addView(textView);
+
+                    linearLayoutAdd.setPadding(0,0,0,10);
+                    phoneScrollLinear.addView(linearLayoutAdd);
                 }
                 LinearLayout emailScrollLinear = (LinearLayout)dialoglayout.findViewById(R.id.alertScrollViewEmails);
                 for(String email : c.getEmailList()){

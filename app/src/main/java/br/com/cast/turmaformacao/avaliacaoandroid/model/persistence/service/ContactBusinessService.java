@@ -41,6 +41,18 @@ public final class ContactBusinessService {
         return list;
     }
 
+    public static List<Contact> getAllByName(String name){
+        List<Contact> list = ContactRepository.getAllByName(name);
+        for (Contact c : list) {
+            Long idContact = c.getId();
+            c.setEmailList(EmailRepository.getAll(idContact));
+            c.setAddress(AddressRepository.getAddress(idContact));
+            c.setPhoneList(PhoneRepository.getAll(idContact));
+            c.setSocialNetworks(SocialNetworkRepository.getAll(idContact));
+        }
+        return list;
+    }
+
     public static void deleteContact(Long id){
         EmailRepository.deleteEmailByContactId(id);
         PhoneRepository.deletePhoneByContactId(id);

@@ -30,6 +30,22 @@ public class ContactRepository {
         return list;
     }
 
+    public static List<Contact> getAllByName(String name){
+        List<Contact> list = new ArrayList<Contact>();
+        String[] whereArgs = {"%"+name+"%"};
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
+        SQLiteDatabase reader = databaseHelper.getReadableDatabase();
+        Cursor c = reader.query(ContactContract.CONTACT_TABLE, ContactContract.colums,
+                ContactContract.CONTACT_NAME + " LIKE ? ", whereArgs,
+                null, null, null);
+        while(c.moveToNext()){
+            list.add(ContactContract.getContactFromCursor(c));
+        }
+        reader.close();
+        databaseHelper.close();
+        return list;
+    }
+
     public static Long addContact(Contact p){
         try {
             DatabaseHelper databaseHelper = DatabaseHelper.getInstance();

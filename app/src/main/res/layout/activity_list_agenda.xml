@@ -5,13 +5,19 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Agenda">
 
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchViewList" />
+
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listViewContacts"
-        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:divider="@android:color/transparent"
-        android:dividerHeight="4dp"/>
+        android:dividerHeight="4dp"
+        android:layout_below="@+id/searchViewList" />
+
 </RelativeLayout>

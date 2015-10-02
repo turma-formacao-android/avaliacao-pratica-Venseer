@@ -4,12 +4,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
-import android.graphics.drawable.ShapeDrawable;
-import android.media.Image;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +18,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +34,7 @@ public class AgendaActivity extends AppCompatActivity {
 
     private ListView listView;
     private ProgressDialog pd;
+    private SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +74,7 @@ public class AgendaActivity extends AppCompatActivity {
 
     private void initialize(){
         listView = (ListView)findViewById(R.id.listViewContacts);
+        searchView = (SearchView)findViewById(R.id.searchViewList);
     }
     private void refreshList(List<Contact> list){
         ContactAdapter ca;
@@ -98,7 +99,12 @@ public class AgendaActivity extends AppCompatActivity {
     }
 
     private void getAndUpdateList(){
-        refreshList(ContactBusinessService.getAll());
+        if(searchView.getQuery().toString().isEmpty()){
+            refreshList(ContactBusinessService.getAll());
+        }
+        else{
+            refreshList(ContactBusinessService.getAllByName(searchView.getQuery().toString()));
+        }
     }
 
     private void bindMethods(){
@@ -194,6 +200,18 @@ public class AgendaActivity extends AppCompatActivity {
                     }
                 });
                 alertDialog.show();
+                return true;
+            }
+        });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                getAndUpdateList();
                 return true;
             }
         });

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/formName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name" />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/formName"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/formZipCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Zip Code"
+                    android:inputType="number" />
+
+                <ImageButton
+                    android:id="@+id/buttonSearchZipCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_search" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/formAddressType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address Type" />
+
+            <EditText
+                android:id="@+id/formAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address" />
+
+            <EditText
+                android:id="@+id/formNeighborhood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Neighborhood" />
+
+            <EditText
+                android:id="@+id/formCity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="City" />
+
+            <EditText
+                android:id="@+id/formState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="State" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linearLayoutAddress"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/titleEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="E-Mails"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <ImageButton
+                    android:id="@+id/buttonNewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_add" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/formEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="E-Mail"
+                android:inputType="textEmailAddress" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linearLayoutEmail"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/titlePhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="Phones"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <ImageButton
+                    android:id="@+id/buttonNewPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_add" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/formPhone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Phone Number"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSocial"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linearLayoutPhone"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/titleSocial"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:text="Social Networks"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <ImageButton
+                    android:id="@+id/buttonNewSocial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_add" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/formSocialName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:hint="Social Network" />
+
+                <EditText
+                    android:id="@+id/formSocialValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:hint="Account or Name" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>

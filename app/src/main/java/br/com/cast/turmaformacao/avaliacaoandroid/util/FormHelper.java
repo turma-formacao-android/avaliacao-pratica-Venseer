@@ -2,6 +2,8 @@ package br.com.cast.turmaformacao.avaliacaoandroid.util;
 
 import android.widget.EditText;
 
+import java.util.List;
+
 /**
  * Created by Tass on 21/09/2015.
  */
@@ -17,6 +19,18 @@ public final class FormHelper {
             if(editText.getText().toString().trim().isEmpty()){
                 editText.setError(requiredMessage);
                 isValid = false;
+            }
+        }
+        return isValid;
+    }
+    public static Boolean validateRequiredList(String requiredMessage, List<EditText>... lists){
+        boolean isValid = true;
+        for (List<EditText> editTextList: lists){
+            for(EditText editText : editTextList) {
+                if (editText.getText().toString().trim().isEmpty()) {
+                    editText.setError(requiredMessage);
+                    isValid = false;
+                }
             }
         }
         return isValid;

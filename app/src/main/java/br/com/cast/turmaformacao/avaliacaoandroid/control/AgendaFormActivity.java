@@ -22,6 +22,7 @@ import br.com.cast.turmaformacao.avaliacaoandroid.model.entities.SocialNetwork;
 import br.com.cast.turmaformacao.avaliacaoandroid.model.persistence.service.ContactBusinessService;
 import br.com.cast.turmaformacao.avaliacaoandroid.model.persistence.service.CorreioService;
 import br.com.cast.turmaformacao.avaliacaoandroid.util.ConstantUtils;
+import br.com.cast.turmaformacao.avaliacaoandroid.util.FormHelper;
 
 /**
  * Created by Administrador on 01/10/2015.
@@ -70,22 +71,27 @@ public class AgendaFormActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.action_add_new_form) {
-            DialogAsyncTask asyncTask = new DialogAsyncTask<Object, Void, Void>(AgendaFormActivity.this){
-                @Override
-                public void onComplete(Object result) {
-                    AgendaFormActivity.this.finish();
-                }
+            if (FormHelper.validateRequired("Required", formName, zipCode, addressType,
+                    address, neighborhood, city, state)) {
+                if (FormHelper.validateRequiredList("Required", phoneList, emailList,
+                        socialNetworkListName, socialNetworkListValue)) {
+                    DialogAsyncTask asyncTask = new DialogAsyncTask<Object, Void, Void>(AgendaFormActivity.this) {
+                        @Override
+                        public void onComplete(Object result) {
+                            AgendaFormActivity.this.finish();
+                        }
 
-                @Override
-                protected Object doInBackground(Object[] objects) {
-                    bindContactAndAddOrEdit();
-                    return null;
+                        @Override
+                        protected Object doInBackground(Object[] objects) {
+                            bindContactAndAddOrEdit();
+                            return null;
+                        }
+                    };
+                    asyncTask.execute();
+                    return true;
                 }
-            };
-            asyncTask.execute();
-            return true;
+            }
         }
-
         return super.onOptionsItemSelected(item);
     }
 

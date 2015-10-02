@@ -22,8 +22,8 @@ public class AddressRepository {
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
         SQLiteDatabase reader = databaseHelper.getReadableDatabase();
         Cursor c = reader.query(AddressContract.ADDRESS_TABLE, AddressContract.colums,
-                AddressContract.ADDRESS_CONTACT_ID+" = ?", whereArgs, null, null, null);
-        if(c.isBeforeFirst() || c.moveToNext())
+                AddressContract.ADDRESS_CONTACT_ID+" = ? ", whereArgs, null, null, null);
+        if(!c.isBeforeFirst() || c.moveToNext())
             address = AddressContract.getAddressFromCursor(c);
         reader.close();
         databaseHelper.close();

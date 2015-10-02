@@ -10,7 +10,7 @@ import br.com.cast.turmaformacao.avaliacaoandroid.model.entities.Contact;
  */
 public class ContactContract {
 
-    public static final String CONTACT_TABLE = "contact";
+    public static final String CONTACT_TABLE = "contact_table";
     public static final String CONTACT_ID = "id";
     public static final String CONTACT_NAME = "name";
 

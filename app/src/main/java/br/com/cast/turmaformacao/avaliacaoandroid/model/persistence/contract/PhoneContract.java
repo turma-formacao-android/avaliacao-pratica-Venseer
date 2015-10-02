@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class PhoneContract {
 
-    public static final String PHONE_TABLE = "phone";
+    public static final String PHONE_TABLE = "phone_table";
     public static final String PHONE_ID = "id";
     public static final String PHONE_NUMBER = "phone";
     public static final String PHONE_CONTACT_ID = "contact_id";
@@ -44,9 +44,6 @@ public class PhoneContract {
         return list;
     }
     public static String getPhoneFromCursor(Cursor c){
-        if(c.isBeforeFirst() || c.moveToNext()){
-            return c.getString(c.getColumnIndex(PHONE_NUMBER));
-        }
-        return null;
+        return c.getString(c.getColumnIndex(PHONE_NUMBER));
     }
 }

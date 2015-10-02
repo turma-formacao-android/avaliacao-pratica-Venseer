@@ -9,14 +9,14 @@ import br.com.cast.turmaformacao.avaliacaoandroid.model.entities.Address;
  * Created by Administrador on 01/10/2015.
  */
 public class AddressContract {
-    public static final String ADDRESS_TABLE = "address";
+    public static final String ADDRESS_TABLE = "address_table";
     public static final String ADDRESS_ID = "id";
     public static final String ADDRESS_ZIPCODE = "zipcode";
     public static final String ADDRESS_TYPE = "type";
     public static final String ADDRESS_ADDRESS = "address";
     public static final String ADDRESS_NEIGHBORHOOD = "neighborhood";
     public static final String ADDRESS_CITY ="city";
-    public static final String ADDRESS_STATE = "state";
+    public static final String  ADDRESS_STATE = "state";
     public static final String ADDRESS_CONTACT_ID = "contact_id";
 
     public static final String[] colums = {ADDRESS_ID, ADDRESS_ZIPCODE, ADDRESS_TYPE, ADDRESS_ADDRESS,

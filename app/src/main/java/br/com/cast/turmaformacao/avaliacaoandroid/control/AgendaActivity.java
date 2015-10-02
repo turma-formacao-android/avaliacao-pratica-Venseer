@@ -67,6 +67,7 @@ public class AgendaActivity extends AppCompatActivity {
                     getAndUpdateList();
                 }
             };
+            listView.setAdapter(ca);
         }
         else{
             ca = (ContactAdapter)listView.getAdapter();

@@ -13,7 +13,7 @@ import br.com.cast.turmaformacao.avaliacaoandroid.model.entities.Contact;
  */
 public class EmailContract {
 
-    public static final String EMAIL_TABLE = "email";
+    public static final String EMAIL_TABLE = "email_table";
     public static final String EMAIL_ID = "id";
     public static final String EMAIL_ADDRESS = "email";
     public static final String EMAIL_CONTACT_ID = "contact_id";
@@ -47,9 +47,6 @@ public class EmailContract {
     }
 
     public static String getEmailFromCursor(Cursor c){
-        if(c.isBeforeFirst() || c.moveToNext()){
-            return c.getString(c.getColumnIndex(EMAIL_ADDRESS));
-        }
-        return null;
+        return c.getString(c.getColumnIndex(EMAIL_ADDRESS));
     }
 }

@@ -13,7 +13,7 @@ import br.com.cast.turmaformacao.avaliacaoandroid.model.entities.SocialNetwork;
  */
 public class SocialNetworkContract {
 
-    public static final String SOCIAL_NETWORK_TABLE = "social_network";
+    public static final String SOCIAL_NETWORK_TABLE = "social_network_Table";
     public static final String SOCIAL_NETWORK_ID = "id";
     public static final String SOCIAL_NETWORK_CONTACT_ID = "contact_id";
     public static final String SOCIAL_NETWORK_NAME = "network";
@@ -51,11 +51,8 @@ public class SocialNetworkContract {
     }
     public static SocialNetwork getSocialNetworkFromCursor(Cursor c){
         SocialNetwork sn = new SocialNetwork();
-        if(c.isBeforeFirst() || c.moveToNext()){
-            sn.setSocialNetoworkName(c.getString(c.getColumnIndex(SOCIAL_NETWORK_NAME)));
-            sn.setValue(c.getString(c.getColumnIndex(SOCIAL_NETWORK_VALUE)));
-            return sn;
-        }
-        return null;
+        sn.setSocialNetoworkName(c.getString(c.getColumnIndex(SOCIAL_NETWORK_NAME)));
+        sn.setValue(c.getString(c.getColumnIndex(SOCIAL_NETWORK_VALUE)));
+        return sn;
     }
 }

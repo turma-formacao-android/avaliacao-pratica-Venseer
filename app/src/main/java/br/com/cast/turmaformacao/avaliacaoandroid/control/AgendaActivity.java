@@ -14,12 +14,9 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.List;
-
-import br.com.cast.turmaformacao.avaliacaoandroid.Agenda;
 import br.com.cast.turmaformacao.avaliacaoandroid.R;
 import br.com.cast.turmaformacao.avaliacaoandroid.control.adapters.ContactAdapter;
 import br.com.cast.turmaformacao.avaliacaoandroid.model.entities.Contact;
@@ -163,7 +160,7 @@ public class AgendaActivity extends AppCompatActivity {
                 buttonEdit.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        pd = ProgressDialog.show(AgendaActivity.this, null, "Loading...", true, false);
+                        pd = ProgressDialog.show(AgendaActivity.this, null, getString(R.string.generic_message_loading), true, false);
                         Intent changeScreenIntent = new Intent(AgendaActivity.this, AgendaFormActivity.class);
                         changeScreenIntent.putExtra(ConstantUtils.CONTACT_KEY, c);
                         startActivity(changeScreenIntent);

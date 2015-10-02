@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import br.com.cast.turmaformacao.avaliacaoandroid.R;
+
 /**
  * Created by Administrador on 30/09/2015.
  */
@@ -14,7 +16,7 @@ public abstract class DialogAsyncTask<Params, Progress, Result> extends AsyncTas
 
     public DialogAsyncTask(Context c) {
         context = c;
-        p = ProgressDialog.show(c, null, "Loading...", true, false);
+        p = ProgressDialog.show(c, null, c.getString(R.string.generic_message_loading), true, false);
     }
 
     protected void onPostExecute(Object o) {

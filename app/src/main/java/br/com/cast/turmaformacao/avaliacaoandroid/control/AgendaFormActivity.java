@@ -218,7 +218,7 @@ public class AgendaFormActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutEmail);
                 EditText newField = new EditText(AgendaFormActivity.this);
-                newField.setHint("E-Mail");
+                newField.setHint(R.string.formEmail);
                 newField.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                 newField.setOnFocusChangeListener(new View.OnFocusChangeListener(){
                     @Override
@@ -238,7 +238,7 @@ public class AgendaFormActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutPhone);
                 EditText newField = new EditText(AgendaFormActivity.this);
-                newField.setHint("Phone Number");
+                newField.setHint(R.string.formPhoneNumber);
                 newField.setInputType(InputType.TYPE_CLASS_PHONE);
                 newField.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                     @Override
@@ -262,8 +262,8 @@ public class AgendaFormActivity extends AppCompatActivity {
                 EditText newValueField = new EditText(AgendaFormActivity.this);
 
 
-                newNetworkField.setHint("Social Network");
-                newValueField.setHint("Account or Name");
+                newNetworkField.setHint(R.string.formSocialNetwork);
+                newValueField.setHint(R.string.formSocialNetworkValue);
                 layoutSocialNetwork.addView(newNetworkField);
                 layoutSocialValue.addView(newValueField);
 

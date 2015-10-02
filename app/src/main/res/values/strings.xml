@@ -3,4 +3,21 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="formName">Name</string>
+    <string name="formZipCode">Zip Code</string>
+    <string name="formAddressType">Address Type</string>
+    <string name="formAddress">Address</string>
+    <string name="formNeighborhood">Neighborhood</string>
+    <string name="formCity">City</string>
+    <string name="formState">State</string>
+    <string name="formEmails">E-Mails</string>
+    <string name="formEmail">E-Mail</string>
+    <string name="formPhones">Phones</string>
+    <string name="formPhoneNumber">Phone Number</string>
+    <string name="formSocialNetworks">Social Networks</string>
+    <string name="formSocialNetwork">Social Network</string>
+    <string name="formSocialNetworkValue">Account or Name</string>
+    <string name="generic_message_ok">Edit</string>
+    <string name="generic_message_delete">Delete</string>
+    <string name="generic_message_loading">Loading...</string>
 </resources>

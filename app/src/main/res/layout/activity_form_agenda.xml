@@ -12,7 +12,7 @@
             android:id="@+id/formName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name" />
+            android:hint="@string/formName" />
 
         <LinearLayout
             android:id="@+id/linearLayoutAddress"
@@ -30,7 +30,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Zip Code"
+                    android:hint="@string/formZipCode"
                     android:inputType="number" />
 
                 <ImageButton
@@ -47,31 +47,31 @@
                 android:id="@+id/formAddressType"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Address Type" />
+                android:hint="@string/formAddressType" />
 
             <EditText
                 android:id="@+id/formAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Address" />
+                android:hint="@string/formAddress" />
 
             <EditText
                 android:id="@+id/formNeighborhood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Neighborhood" />
+                android:hint="@string/formNeighborhood" />
 
             <EditText
                 android:id="@+id/formCity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="City" />
+                android:hint="@string/formCity" />
 
             <EditText
                 android:id="@+id/formState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="State" />
+                android:hint="@string/formState" />
         </LinearLayout>
 
         <LinearLayout
@@ -91,7 +91,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:text="E-Mails"
+                    android:text="@string/formEmails"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <ImageButton
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:ems="10"
-                android:hint="E-Mail"
+                android:hint="@string/formEmail"
                 android:inputType="textEmailAddress" />
 
         </LinearLayout>
@@ -131,7 +131,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:text="Phones"
+                    android:text="@string/formPhones"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <ImageButton
@@ -148,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Phone Number"
+                android:hint="@string/formPhoneNumber"
                 android:inputType="phone" />
         </LinearLayout>
 
@@ -169,7 +169,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="9"
-                    android:text="Social Networks"
+                    android:text="@string/formSocialNetworks"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
                 <ImageButton
@@ -196,7 +196,7 @@
                             android:id="@+id/formSocialName"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Social Network" />
+                            android:hint="@string/formSocialNetwork" />
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="0dp"
@@ -208,7 +208,7 @@
                             android:id="@+id/formSocialValue"
                             android:layout_height="wrap_content"
                             android:layout_width="match_parent"
-                            android:hint="Account or Name" />
+                            android:hint="@string/formSocialNetworkValue" />
                 </LinearLayout>
 
             </LinearLayout>

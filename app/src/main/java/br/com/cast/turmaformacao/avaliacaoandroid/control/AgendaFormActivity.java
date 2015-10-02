@@ -178,10 +178,19 @@ public class AgendaFormActivity extends AppCompatActivity {
                     ((EditText) findViewById(R.id.formPhone)).setText(c.getPhoneList().get(i));
                 }
                 else{
-                    LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutPhone);
+                    final LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutPhone);
                     EditText editText = new EditText(AgendaFormActivity.this);
                     editText.setText(c.getPhoneList().get(i));
                     editText.setInputType(InputType.TYPE_CLASS_PHONE);
+                    editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                        @Override
+                        public void onFocusChange(View view, boolean b) {
+                            if (!b && ((EditText) view).getText().toString().trim().length() == 0) {
+                                layout.removeView(view);
+                                phoneList.remove(view);
+                            }
+                        }
+                    });
                     layout.addView(editText);
                     phoneList.add(editText);
                 }
@@ -191,10 +200,19 @@ public class AgendaFormActivity extends AppCompatActivity {
                     ((EditText) findViewById(R.id.formEmail)).setText(c.getEmailList().get(i));
                 }
                 else{
-                    LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutEmail);
+                    final LinearLayout layout = (LinearLayout)findViewById(R.id.linearLayoutEmail);
                     EditText editText = new EditText(AgendaFormActivity.this);
                     editText.setText(c.getEmailList().get(i));
                     editText.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                    editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                        @Override
+                        public void onFocusChange(View view, boolean b) {
+                            if (!b && ((EditText) view).getText().toString().trim().length() == 0) {
+                                layout.removeView(view);
+                                emailList.remove(view);
+                            }
+                        }
+                    });
                     layout.addView(editText);
                     emailList.add(editText);
                 }
@@ -207,14 +225,46 @@ public class AgendaFormActivity extends AppCompatActivity {
                             .get(i).getValue());
                 }
                 else{
-                    LinearLayout layoutName = (LinearLayout)findViewById(R.id.linearLayoutSocialNetwork);
-                    LinearLayout layoutValue = (LinearLayout)findViewById(R.id.linearLayoutSocialValue);
+                    final LinearLayout layoutName = (LinearLayout)findViewById(R.id.linearLayoutSocialNetwork);
+                    final LinearLayout layoutValue = (LinearLayout)findViewById(R.id.linearLayoutSocialValue);
                     EditText editText = new EditText(AgendaFormActivity.this);
                     editText.setText(c.getSocialNetworks().get(i).getSocialNetoworkName());
                     layoutName.addView(editText);
+                    editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                        @Override
+                        public void onFocusChange(View view, boolean b) {
+                            EditText networkName = (EditText) view;
+                            EditText networkValue = socialNetworkListValue.get(socialNetworkListName.indexOf(view));
+                            if (!b &&
+                                    networkName.getText().toString().trim().length() == 0
+                                    &&
+                                    networkValue.getText().toString().trim().length() == 0) {
+                                layoutName.removeView(networkName);
+                                layoutValue.removeView(networkValue);
+                                socialNetworkListName.remove(networkName);
+                                socialNetworkListValue.remove(networkValue);
+                            }
+                        }
+                    });
                     socialNetworkListName.add(editText);
                     editText = new EditText(AgendaFormActivity.this);
                     editText.setText(c.getSocialNetworks().get(i).getValue());
+                    editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                        @Override
+                        public void onFocusChange(View view, boolean b) {
+                            EditText networkValue = (EditText) view;
+                            EditText networkName = socialNetworkListName.get(socialNetworkListValue.indexOf(view));
+                            if (!b &&
+                                    networkName.getText().toString().trim().length() == 0
+                                    &&
+                                    networkValue.getText().toString().trim().length() == 0) {
+                                layoutName.removeView(networkName);
+                                layoutValue.removeView(networkValue);
+                                socialNetworkListName.remove(networkName);
+                                socialNetworkListValue.remove(networkValue);
+                            }
+                        }
+                    });
                     layoutValue.addView(editText);
                     socialNetworkListValue.add(editText);
                 }
